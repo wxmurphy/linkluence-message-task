@@ -1,0 +1,1 @@
+java -jar -Xmx1024m ../biz-message-push-task-1.0.0-SNAPSHOT.jar

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 配置生成器 -->
+<generatorConfiguration>
+    <!--导入属性配置 -->
+    <properties resource="GEN-INF/mbg.properties" />
+	
+	<context id="BIZLINK" defaultModelType="hierarchical">
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="${jdbc.driverClass}" 
+			connectionURL="${jdbc.biz.connectionURL}" userId="${jdbc.biz.userId}" password="${jdbc.biz.password}" />
+
+		<javaModelGenerator targetPackage="com.bizlink.persistent.entity" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		
+		<sqlMapGenerator targetPackage="com.bizlink.persistent.mapper" targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator targetPackage="com.bizlink.persistent.mapper" targetProject="src/main/java" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<!-- 
+		<table schema="" tableName="t_biz_merchant" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="is_def" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="audit_status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_department" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_user" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="is_mobile_binded" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="is_email_binded" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_partner" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_item" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_user_merchant" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="is_admin" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_user_department" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_item" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_partner_item" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_sequence_rule" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="flag" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		
+		<table schema="" tableName="t_biz_bill_head_side_info" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="biz_type" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="cancel_agree_status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="confirm_status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="originator" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_bill_body_side_info" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="confirm_status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_bill_body" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="sel_type" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="discount_type" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="finish_status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="settle_status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="confirm_status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_bill_head" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="tax_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="confirm_status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="finish_status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="editable" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="send_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="discount_type" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_bill_comment" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_log" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="log_type" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="biz_type" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="read_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_log_det" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_mail" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="send_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="read_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_ret" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_send" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_send_plan" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_fin_bill_head" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="tax_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_fin_bill_settle" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_partner_req" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="accept_status" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		<table schema="" tableName="t_biz_user_req" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="direct" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="accept" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_user_interact_partner" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		 
+		
+		<table schema="" tableName="t_biz_message" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="read_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_transaction" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		
+		
+		<table schema="" tableName="t_biz_user_position" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		
+		<table schema="" tableName="t_biz_position" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_position_template" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_permission" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_user_repo" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_item_user" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_itemgroup" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_itemgroup_user" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_message_queue" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="push_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_operation_template_mapping" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="type" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_message" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="read_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_message_template" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="temp_code" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		-->
+		
+		<table schema="" tableName="t_biz_bill_comment" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_message" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="msg_type" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="read_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="at_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="notice_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_message_queue" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="push_type" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="push_flag" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_user_merchant" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="is_admin" jdbcType="TINYINT" javaType="Integer"/>
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+		<table schema="" tableName="t_biz_transaction_side_info" enableInsert="true" enableSelectByPrimaryKey="true" enableSelectByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true" enableDeleteByPrimaryKey="true" enableDeleteByExample="true" enableCountByExample="true"
+			selectByExampleQueryId="true">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC" />
+			<columnOverride column="status" jdbcType="TINYINT" javaType="Integer"/>
+		</table>
+		
+	</context>
+</generatorConfiguration>

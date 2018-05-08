@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bizlink.persistent.mapper.TBizMessageMapperB">
+  	<insert id="batchInsert" parameterType="com.bizlink.persistent.entity.TBizMessage">
+  	  insert into t_biz_message (
+  	  user_id,bill_no,msg_type,msg_content,read_flag,at_flag,notice_flag,create_time,status
+  	  )
+    values 
+    <foreach collection="messageList" item="o" separator=",">
+    	<trim prefix="(" suffix=")" suffixOverrides=",">
+    	  <choose>
+    	  <when test="o.userId != null">
+    	  #{o.userId,jdbcType=BIGINT},
+    	  </when>
+	      <otherwise>0,</otherwise>
+	      </choose>
+	      
+	      <choose>
+	      <when test="o.billNo != null">
+	      #{o.billNo,jdbcType=VARCHAR},
+	      </when>
+	      <otherwise>'',</otherwise>
+	      </choose>
+	      
+	      <choose>
+	      <when test="o.msgType != null">
+	      #{o.msgType,jdbcType=INTEGER},
+	      </when>
+	      <otherwise>0,</otherwise>
+	      </choose>
+	      
+	      <choose>
+	      <when test="o.msgContent != null">
+	      #{o.msgContent,jdbcType=VARCHAR},
+	      </when>
+	      <otherwise>'',</otherwise>
+	      </choose>
+	      
+	      <choose>
+	      <when test="o.readFlag != null">
+	      #{o.readFlag,jdbcType=TINYINT},
+	      </when>
+	      <otherwise>0,</otherwise>
+	      </choose>
+	      
+	      <choose>
+	      <when test="o.atFlag != null">
+	      #{o.atFlag,jdbcType=TINYINT},
+	      </when>
+	      <otherwise>0,</otherwise>
+	      </choose>
+	      
+	      <choose>
+	      <when test="o.noticeFlag != null">
+	      #{o.noticeFlag,jdbcType=TINYINT},
+	      </when>
+	      <otherwise>0,</otherwise>
+	      </choose>
+	      
+	      <choose>
+	      <when test="o.createTime != null">
+	      #{o.createTime,jdbcType=TINYINT},
+	      </when>
+	      <otherwise>'0000-00-00 00:00:00',</otherwise>
+	      </choose>
+	      
+	      <choose>
+	      <when test="o.createTime != null">
+	      #{o.status,jdbcType=TINYINT},
+	      </when>
+	      <otherwise>0,</otherwise>
+	      </choose>
+	         
+    	</trim>
+    </foreach>
+  	</insert>
+</mapper>
